@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SmartStudy Planner</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>📚 SmartStudy</h2>
+                <button class="toggle-sidebar" id="sidebarToggle">☰</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-link active" data-page="dashboard">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="#courses" class="nav-link" data-page="courses">
+                    <span class="icon">📖</span> Courses
+                </a>
+                <a href="#planner" class="nav-link" data-page="planner">
+                    <span class="icon">📅</span> Planner
+                </a>
+                <a href="#tasks" class="nav-link" data-page="tasks">
+                    <span class="icon">✓</span> Tasks
+                </a>
+                <a href="#schedule" class="nav-link" data-page="schedule">
+                    <span class="icon">🕐</span> Schedule
+                </a>
+                <a href="#analytics" class="nav-link" data-page="analytics">
+                    <span class="icon">📈</span> Analytics
+                </a>
+                <a href="#recommendations" class="nav-link" data-page="recommendations">
+                    <span class="icon">💡</span> Recommendations
+                </a>
+                <a href="#profile" class="nav-link" data-page="profile">
+                    <span class="icon">👤</span> Profile
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-small btn-secondary" id="logoutBtn">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <h1 id="pageTitle">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar">
+                        <span id="userName">User</span>
+                    </div>
+                    <button class="btn btn-sm btn-primary" id="addNewBtn">+ New</button>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Dashboard Page -->
+                <div id="dashboard-page" class="page-section active">
+                    <div class="dashboard-grid">
+                        <!-- Stats Cards -->
+                        <div class="stats-container">
+                            <div class="stat-card">
+                                <div class="stat-icon">📚</div>
+                                <div class="stat-content">
+                                    <h3>Total Study Hours</h3>
+                                    <p class="stat-value" id="totalStudyHours">0</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">✓</div>
+                                <div class="stat-content">
+                                    <h3>Tasks Completed</h3>
+                                    <p class="stat-value" id="tasksCompleted">0</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">📊</div>
+                                <div class="stat-content">
+                                    <h3>Average Productivity</h3>
+                                    <p class="stat-value" id="avgProductivity">0<span class="unit">/10</span></p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🔥</div>
+                                <div class="stat-content">
+                                    <h3>Study Streak</h3>
+                                    <p class="stat-value" id="streakDays">0<span class="unit"> days</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Main Dashboard Grid -->
+                        <div class="dashboard-main">
+                            <!-- Upcoming Tasks -->
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <h3>📋 Upcoming Tasks</h3>
+                                    <a href="#tasks" class="link-text">View All</a>
+                                </div>
+                                <div class="card-body">
+                                    <div id="upcomingTasks" class="tasks-list">
+                                        <p class="empty-state">No upcoming tasks</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Today's Schedule -->
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <h3>🕐 Today's Schedule</h3>
+                                    <a href="#schedule" class="link-text">View All</a>
+                                </div>
+                                <div class="card-body">
+                                    <div id="todaySchedule" class="schedule-list">
+                                        <p class="empty-state">No sessions scheduled</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Study Recommendations -->
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <h3>💡 Smart Recommendations</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div id="recommendations" class="recommendations-list">
+                                        <p class="empty-state">No new recommendations</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Quick Stats -->
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <h3>📈 Quick Stats</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="quick-stats">
+                                        <div class="quick-stat">
+                                            <span>Active Courses</span>
+                                            <strong id="activeCourses">0</strong>
+                                        </div>
+                                        <div class="quick-stat">
+                                            <span>Pending Tasks</span>
+                                            <strong id="pendingTasks">0</strong>
+                                        </div>
+                                        <div class="quick-stat">
+                                            <span>Completion Rate</span>
+                                            <strong id="completionRate">0%</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Courses Page -->
+                <div id="courses-page" class="page-section">
+                    <div class="page-header">
+                        <h2>My Courses</h2>
+                        <button class="btn btn-primary" id="addCourseBtn">+ Add Course</button>
+                    </div>
+                    <div id="coursesList" class="courses-grid">
+                        <p class="empty-state">No courses yet. Add one to get started!</p>
+                    </div>
+                </div>
+
+                <!-- Planner Page -->
+                <div id="planner-page" class="page-section">
+                    <div class="page-header">
+                        <h2>Study Planner</h2>
+                        <button class="btn btn-primary" id="addPlanBtn">+ Create Plan</button>
+                    </div>
+                    <div id="plansList" class="plans-list">
+                        <p class="empty-state">No study plans yet. Create one to organize your learning!</p>
+                    </div>
+                </div>
+
+                <!-- Tasks Page -->
+                <div id="tasks-page" class="page-section">
+                    <div class="page-header">
+                        <h2>Study Tasks</h2>
+                        <button class="btn btn-primary" id="addTaskBtn">+ Add Task</button>
+                    </div>
+                    <div class="tasks-filter">
+                        <select id="taskFilter">
+                            <option value="">All Tasks</option>
+                            <option value="TODO">To Do</option>
+                            <option value="IN_PROGRESS">In Progress</option>
+                            <option value="COMPLETED">Completed</option>
+                            <option value="CRITICAL">Critical Priority</option>
+                            <option value="HIGH">High Priority</option>
+                        </select>
+                    </div>
+                    <div id="allTasksList" class="tasks-list">
+                        <p class="empty-state">No tasks to display</p>
+                    </div>
+                </div>
+
+                <!-- Schedule Page -->
+                <div id="schedule-page" class="page-section">
+                    <div class="page-header">
+                        <h2>Study Schedule</h2>
+                        <button class="btn btn-primary" id="addSessionBtn">+ Schedule Session</button>
+                    </div>
+                    <div id="sessionsList" class="schedule-list">
+                        <p class="empty-state">No sessions scheduled</p>
+                    </div>
+                </div>
+
+                <!-- Analytics Page -->
+                <div id="analytics-page" class="page-section">
+                    <div class="page-header">
+                        <h2>Analytics & Progress</h2>
+                    </div>
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h3>Weekly Study Progress</h3>
+                            <canvas id="weeklyChart"></canvas>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Productivity Trends</h3>
+                            <canvas id="productivityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations Page -->
+                <div id="recommendations-page" class="page-section">
+                    <div class="page-header">
+                        <h2>Smart Recommendations</h2>
+                    </div>
+                    <div id="allRecommendations" class="recommendations-list">
+                        <p class="empty-state">No recommendations available</p>
+                    </div>
+                </div>
+
+                <!-- Profile Page -->
+                <div id="profile-page" class="page-section">
+                    <div class="page-header">
+                        <h2>User Profile</h2>
+                    </div>
+                    <div class="profile-container">
+                        <form id="profileForm" class="profile-form">
+                            <div class="form-group">
+                                <label>Learning Style</label>
+                                <select id="learningStyle" required>
+                                    <option value="VISUAL">Visual</option>
+                                    <option value="AUDITORY">Auditory</option>
+                                    <option value="READING">Reading/Writing</option>
+                                    <option value="KINESTHETIC">Kinesthetic</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Daily Study Goal (hours)</label>
+                                <input type="number" id="dailyGoal" min="0.5" step="0.5" value="2" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Preferred Study Time</label>
+                                <input type="time" id="preferredTime" required>
+                            </div>
+
+                            <div class="form-group checkbox">
+                                <input type="checkbox" id="notificationEnabled" checked>
+                                <label for="notificationEnabled">Enable Notifications</label>
+                            </div>
+
+                            <div class="form-group checkbox">
+                                <input type="checkbox" id="weeklyReportEnabled" checked>
+                                <label for="weeklyReportEnabled">Enable Weekly Reports</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Save Profile</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Add Course</h2>
+            <form id="courseForm" class="modal-form">
+                <div class="form-group">
+                    <label>Course Name *</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Course Code *</label>
+                    <input type="text" name="code" required>
+                </div>
+                <div class="form-group">
+                    <label>Instructor</label>
+                    <input type="text" name="instructor">
+                </div>
+                <div class="form-group">
+                    <label>Credit Hours *</label>
+                    <input type="number" name="credit_hours" min="1" max="12" required>
+                </div>
+                <div class="form-group">
+                    <label>Semester</label>
+                    <input type="text" name="semester" placeholder="e.g., Spring 2024">
+                </div>
+                <div class="form-group">
+                    <label>Color</label>
+                    <input type="color" name="color" value="#3498db">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Add Course</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

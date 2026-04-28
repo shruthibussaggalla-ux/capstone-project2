@@ -1,0 +1,10 @@
+"""
+Requirements for SmartStudy Planner backend.
+"""
+Django==4.2.0
+djangorestframework==3.14.0
+django-cors-headers==4.0.0
+django-filter==23.1
+Pillow==9.5.0
+python-decouple==3.8
+requests==2.31.0

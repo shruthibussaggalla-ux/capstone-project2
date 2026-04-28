@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartStudy Planner - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <h1>SmartStudy Planner</h1>
+                <p>Intelligent Study Planning & Time Management</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="register">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active-form" method="POST">
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" name="username" required placeholder="Enter your username">
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" required placeholder="Enter your password">
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <p class="auth-footer-text">Don't have an account? <a href="#register" class="switch-tab">Register here</a></p>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form" method="POST">
+                <div class="form-group">
+                    <label for="regFirstName">First Name</label>
+                    <input type="text" id="regFirstName" name="first_name" placeholder="Enter your first name">
+                </div>
+
+                <div class="form-group">
+                    <label for="regLastName">Last Name</label>
+                    <input type="text" id="regLastName" name="last_name" placeholder="Enter your last name">
+                </div>
+
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" name="email" required placeholder="Enter your email">
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="regUsername">Username</label>
+                    <input type="text" id="regUsername" name="username" required placeholder="Choose a username">
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" name="password" required placeholder="Enter a strong password">
+                    <span class="error-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="regConfirmPassword">Confirm Password</label>
+                    <input type="password" id="regConfirmPassword" name="confirm_password" required placeholder="Confirm your password">
+                    <span class="error-message"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                <p class="auth-footer-text">Already have an account? <a href="#login" class="switch-tab">Login here</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
